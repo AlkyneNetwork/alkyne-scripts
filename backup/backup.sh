@@ -1,8 +1,8 @@
 # !/bin/bash
-alkyne_jar_path=$PWD/jar
+alkyne_script_path=$PWD/backup
 
 # load commands
-for script in $alkyne_jar_path/scripts/{files,help,link}.sh; do
+for script in $alkyne_script_path/scripts/{help,status}.sh; do
     source $script
 done
 
@@ -10,11 +10,8 @@ case $1 in
     "" | "--help")
         print_help
         ;;
-    "link")
-        link_jars $@
-        ;;
     "status")
-        status_jars $@
+        backup_status $@
         ;;
     *)
         print_help

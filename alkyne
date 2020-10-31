@@ -1,12 +1,14 @@
 # !/bin/bash
+set -e -o pipefail
 
 print_help() {
     echo "alkyne-scripts"
     echo
-    echo "usage: alkyne <jar>"
+    echo "usage: alkyne <jar|backup>"
     echo
     echo "The root alkyne-scripts command."
     echo "  jar     Symlink jars to the server folder"
+    echo "  backup  Manage restic backups"
 }
 
 case $1 in
@@ -14,7 +16,10 @@ case $1 in
         print_help
         ;;
     "jar")
-        ./jar/jar ${@:2}
+        ./jar/jar.sh ${@:2}
+        ;;
+    "backup")
+        ./backup/backup.sh ${@:2}
         ;;
     *)
         print_help
