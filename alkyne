@@ -1,0 +1,22 @@
+# !/bin/bash
+
+print_help() {
+    echo "alkyne-scripts"
+    echo
+    echo "usage: alkyne <jar>"
+    echo
+    echo "The root alkyne-scripts command."
+    echo "  jar     Symlink jars to the server folder"
+}
+
+case $1 in
+    "--help")
+        print_help
+        ;;
+    "jar")
+        ./jar/jar ${@:2}
+        ;;
+    *)
+        print_help
+        ;;
+esac
